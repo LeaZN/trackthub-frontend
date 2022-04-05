@@ -14,3 +14,14 @@ export const getAlbums = () => async (dispatch) => {
 
     
 }
+
+export const createAlbum = (album) => async (dispatch) => {
+    try {
+        const { data } = await api.createAlbum(album);
+
+        dispatch({ type: "CREATE_ALBUM", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+
+}

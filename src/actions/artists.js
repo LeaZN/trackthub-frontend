@@ -14,3 +14,14 @@ export const getArtists = () => async (dispatch) => {
 
     
 }
+
+export const createArtist = (artist) => async (dispatch) => {
+    try {
+        const { data } = await api.createArtist(artist);
+
+        dispatch({ type: "CREATE_ARTIST", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+
+}

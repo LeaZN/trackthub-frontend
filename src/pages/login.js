@@ -1,36 +1,22 @@
+import Login from '../components/Login/login';
+
+// import Signup from '../components/Signup/signup';
 
 
 
+function LogIn() {
 
 
+  return(
+<>
+<div className="login-content">
+  <Login />
+  {/* <Signup /> */}
+</div>
+</>
 
-function Login() {
-
- 
-
-    return (
-      <div className="login">
-        <header className="login-header">
-        
-        </header>
-  
-        <div>
-         Login
-         <form>
-      <label>
-        <input type="text" placeholder="username"/>
-        <input type="text" placeholder="password"/>
-      
-        <button type="button" >
-      Login
-    </button>
-
-      </label>
-      </form>
-        </div>
-      </div>
-    );
+  );
   }
   
-  export default Login;
+  export default LogIn;
   

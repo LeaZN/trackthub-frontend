@@ -9,7 +9,7 @@ export default function albumsReducer (albums = [], action) {
                     return action.payload;
 
             case 'CREATE_ALBUM':
-                    return albums;
+                    return [...albums, action.payload];
             default:
                     return albums;
 

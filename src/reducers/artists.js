@@ -9,7 +9,7 @@ export default function artistsReducer (artists = [], action) {
                 return action.payload;
 
         case 'CREATE_ARTIST':
-                return artists;
+                return [...artists, action.payload];
         default:
                 return artists;
 
