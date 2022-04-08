@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+
+
+
+
+
+# Simple music streaming app built using React, Redux reducers and Axios.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
