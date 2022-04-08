@@ -1,32 +1,32 @@
 
 import { useSelector } from 'react-redux';
 import Album from '../components/Albums/album'
-import { CircularProgress } from '@material-ui/core'
+import Loading from '../components/Loading/loading';
 
 
 
 function Albums() {
 
 const albums = useSelector((state) => state.albums);
-// console.log(albums);
 
-  // const images = [
-  //   { url: "https://source.unsplash.com/collection/888137/200x200"},
-  // ];
+console.log(albums);
+
   
+
     return (
-      !albums.length ? <CircularProgress /> : (
+
+      !albums.length ? <Loading/> : (
 
       <div className="album-container">
          
   
                {albums.map((album) =>(
-                 <div className="album-component" key={album._id}>
+                 <div key={album._id}>
                    <Album album={album} />
                    </div>
-               ))}
+               ))};
 
-        
+
       </div>
       )
     );

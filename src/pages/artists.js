@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Artist from '../components/Artists/artist';
-import { CircularProgress } from '@material-ui/core'
+import Loading from '../components/Loading/loading';
 
 
 function Artists() {
@@ -10,12 +10,12 @@ function Artists() {
 
     return (
 
-      !artists.length ? <CircularProgress /> : (
-      <div className="artist">
+      !artists.length ? <Loading/> : (
+        <div className="artist">
         <div className="artist-container">
 
        {artists.map((artist) =>(
-                 <div className="artist-component" key={artist._id}>
+                 <div key={artist._id}>
                    <Artist artist={artist} />
                    </div>
                ))}

@@ -1,7 +1,5 @@
 import Login from '../components/Login/login';
-
-// import Signup from '../components/Signup/signup';
-
+import SignUp from '../components/Signup/signup';
 
 
 function LogIn() {
@@ -11,7 +9,7 @@ function LogIn() {
 <>
 <div className="login-content">
   <Login />
-  {/* <Signup /> */}
+  <SignUp />
 </div>
 </>
 

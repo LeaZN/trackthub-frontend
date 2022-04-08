@@ -8,11 +8,12 @@ import {createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './App';
+import setAuthorizationToken from './auth/setAuthorizationToken';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 
-
+setAuthorizationToken(localStorage.jwtToken);
 
 ReactDOM.render(
  

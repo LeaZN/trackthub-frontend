@@ -5,8 +5,7 @@ import { useDispatch} from 'react-redux';
 import { getAlbums } from './actions/albums';
 import { getArtists } from './actions/artists';
 
-import { Auth0Provider } from '@auth0/auth0-react';
-import ProtectedRoute from './auth/protectedRoute';
+// import ProtectedRoute from './auth/protectedRoute';
 
 
 import LogIn from "./pages/login";
@@ -19,8 +18,6 @@ import AlbumId from "./pages/albumId";
 import AddArtist from './pages/addArtist';
 
 
-// import { useAuth0 } from '@auth0/auth0-react';
-// import Loading from './components/Loading/loading';
 // import Logo from './images/logo.png'
 // import NotFound from "./pages/notFound";
 
@@ -39,25 +36,12 @@ useEffect(() => {
 }, [dispatch]);
 
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-
-
-  // const { isLoading } = useAuth0();
-
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
-
   return (
 
 <div className="App">
 
   <BrowserRouter>
-  <Auth0Provider
-  domain={domain}
-  clientId={clientId}
-  redirectUri={`${window.location.origin}/browse`}>
+  
 
 
   <div className="nav">
@@ -66,13 +50,8 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
           <div className="nav-title"> 
           TrackThub
           </div>
-
           <div className="nav-logo">
-            {/* <img className="logo" src={Logo} alt="trackthub-logo"/> */}
           </div>
-
-          {/* <img className="logo" src={Logo} alt="trackthub-logo"/> */}
-          
          <div className="nav-links">
           <Link to="/browse" className="nav-home">
               Browse
@@ -98,20 +77,31 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
     <Route path="/" element={<LogIn />}  exact />
 
-    <Route path="/Browse" element={<ProtectedRoute component={Home} />}/>
+    {/* <Route path="/Browse" element={<ProtectedRoute component={Home} />}/>
     <Route path="/Artist" element={<ProtectedRoute component={Artists} /> } />
     <Route path="/Albums" element={<ProtectedRoute component={Albums} /> } />
 
     <Route path="/Artist/:artistName" element={<ProtectedRoute component={ArtistId} />} />
     <Route path="/Artist/:artistName/albums" element={<ProtectedRoute component={AlbumId} />} />
 
-    <Route path="/Admin" element={<ProtectedRoute component={AddArtist} />} />
+    <Route path="/Admin" element={<ProtectedRoute component={AddArtist} />} /> */}
+
+
+    <Route path="/Browse" element={<Home />}/>
+    <Route path="/Artist" element={<Artists /> } />
+    <Route path="/Albums" element={<Albums /> } />
+
+    <Route path="/Artist/:artistName" element={<ArtistId />} />
+    <Route path="/Artist/:artistName/albums" element={<AlbumId />} />
+
+    <Route path="/Admin" element={<AddArtist />} />
+
 
     {/* <Route element={<NotFound/>} /> */}
 
+
   </Routes>
 
-</Auth0Provider>
 </BrowserRouter>
 
 </div>

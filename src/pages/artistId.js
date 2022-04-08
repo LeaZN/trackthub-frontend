@@ -2,7 +2,7 @@ import React from 'react';
 // import { useState } from 'react';
 import { useLocation, useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { CircularProgress } from '@material-ui/core'
+import Loading from '../components/Loading/loading';
 
 
 const ArtistId = () => {
@@ -12,12 +12,11 @@ const ArtistId = () => {
 
    const artists = useSelector((state) => state.artists);
 
-  // console.log(artists);
 
   return (
 
-    !artists.length ? <CircularProgress /> : (
-<>
+    !artists.length ? <Loading/> : (
+      <>
 
 <div className="query"> {query.get("artistName")}</div>
 
@@ -31,42 +30,19 @@ const ArtistId = () => {
             return artist
           }
         }).map((artist) => {
-          return <Link to={`/artist/${artist.artistName}/albums`} className="artistbyId" key="">
-            <div className="artist-component">
+          return  <Link to={`/artist/${artist.artistName}/albums`} className="artistId-component" key="">
+            <div >
           <h3>{artist.artistName}</h3>
           <img className="artist-photo" src={artist.selectedFile} alt="artistPhoto"/>
+          <div className="artist-elements">
           <h4>Followers: {artist.followersCount}</h4>
           <h4>Rating: {artist.rating}/5</h4>
-          
-          
-          
           </div>
-          </Link>;
+          </div>
+          </Link>
+          
         })}
 
-
-
-
-
-
-
-
-
-{/* <div className="artist">
-        <header className="artist-header">
-        </header>
-  
-        <div className="content-wrap">
-
-        {artists.map((artist) =>(
-                 <div className="object-container" key={artist._id}>
-                   <ArtistById artist={artist} />
-                   </div>
-               ))}
-         
-        
-        </div>
-      </div> */}
 
 </div>
     </>

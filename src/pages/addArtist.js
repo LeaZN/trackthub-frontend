@@ -5,16 +5,14 @@ import { createAlbum } from '../actions/albums';
 import { createArtist } from '../actions/artists';
 
 
-
 function AddArtist() {
   
-
     const [artistData, setArtistData] = useState({
-        artistName: '', followersCount: '', artistPhoto: '', rating: '',
+        artistName: '', followersCount: '', selectedFile: '', rating: '',
     });
 
     const [albumData, setAlbumData] = useState({
-        albumName:'', artistName:'', albumPhoto:'', releaseDate:'', numberOfTracks:'',
+        albumName:'', artistName:'', selectedFile:'', releaseDate:'', numberOfTracks:'',
     });
 
     const dispatch = useDispatch();
@@ -35,22 +33,21 @@ function AddArtist() {
 
 
         const clearArtist = () => {
-          setArtistData({artistName: '', followersCount: '', artistPhoto: '', rating: ''});
+          setArtistData({artistName: '', followersCount: '', selectedFile: '', rating: ''});
            
         }
 
         const clearAlbum = () => {
-          setAlbumData ({ albumName:'', artistName:'', albumPhoto:'', releaseDate:'', numberOfTracks:'' });
+          setAlbumData ({ albumName:'', artistName:'', selectedFile:'', releaseDate:'', numberOfTracks:'' });
            
         }
 
   
     return (
-      <div className="addArtist">
-        <header className="addArtist-header">
-       </header>
-  
-         <div className="content-wrap-admin">
+
+      
+
+         <div className="admin-container">
 
     <div className="addArtist">
         <h1> Add Artist</h1>
@@ -61,6 +58,8 @@ function AddArtist() {
             <input 
             name="artistName" 
             value={artistData.artistName}
+            placeholder=" Billy Idol"
+            required
             onChange={(e) => setArtistData({ ...artistData, artistName: e.target.value})}
             />
           </label>
@@ -71,38 +70,39 @@ function AddArtist() {
             <input 
             name="followers" 
             value={artistData.followersCount}
+            placeholder="3000"
             onChange={(e) => setArtistData({ ...artistData, followersCount: e.target.value})}
             />
           </label>
         </fieldset>
-       
-
-        <div className="addArtistFile">
-        <p>Photo</p>
-
-        </div>
-        <FileBase 
-          type='file'
-          multiple={false}
-          onDone={({base64}) => setArtistData({ ...artistData, selectedFile: base64})}
-        />
-
-
         <fieldset>
           <label>
             <p>Rating</p>
             <input 
             name="rating" 
+            placeholder="4"
             value={artistData.rating}
             onChange={(e) => setArtistData({ ...artistData, rating: e.target.value})}
             />
           </label>
         </fieldset>
-        <button type="submit">Submit</button>
+        <div className="addArtistFile">
+        <fieldset>
+        <p>Photo</p>
+        <FileBase 
+          type='file'
+          multiple={false}
+          onDone={({base64}) => setArtistData({ ...artistData, selectedFile: base64})}
+        />
+        </fieldset>
+        </div>
+        <button className="addArtist-submit-btn" type="submit">Submit</button>
       </form>
-      <button onClick={clearArtist}>Clear</button>
+      <button className="addArtist-clear-btn" onClick={clearArtist}>Clear</button>
 
       </div>
+
+
 
 <div className="addAlbum">
       <h1> Add Album</h1>
@@ -112,6 +112,7 @@ function AddArtist() {
             <p>Album Name</p>
             <input 
             name="albumName"
+            placeholder="Dressed for space"
             value={albumData.albumName}
             onChange={(e) => setAlbumData({ ...albumData, albumName: e.target.value})}
             />
@@ -122,38 +123,18 @@ function AddArtist() {
             <p>Artist Name</p>
             <input 
             name="artistName" 
+            placeholder="Trust"
             value={albumData.artistName}
             onChange={(e) => setAlbumData({ ...albumData, artistName: e.target.value})}
             />
           </label>
         </fieldset>
-        {/* <fieldset>
-          <label>
-            <p>Album Photo</p>
-            <input 
-            name="albumPhoto" 
-            value={albumData.albumPhoto}
-            onChange={(e) => setAlbumData({ ...albumData, albumPhoto: e.target.value})}
-            />
-          </label>
-        </fieldset> */}
-
-        <div className="addAlbumFile">
-        <p>Photo</p>
-        
-        <FileBase 
-          type='file'
-          multiple={false}
-          onDone={({base64}) => setAlbumData({ ...albumData, selectedFile: base64})}
-        />
-
-        </div>
-
         <fieldset>
           <label>
             <p>Release Date</p>
             <input 
             name="releaseDate" 
+            placeholder="2016"
             value={albumData.releaseDate}
             onChange={(e) => setAlbumData({ ...albumData, releaseDate: e.target.value})}
             />
@@ -164,20 +145,30 @@ function AddArtist() {
             <p>Number Of Tracks</p>
             <input 
             name="numberOfTracks" 
+            placeholder="11"
             value={albumData.numberOfTracks}
             onChange={(e) => setAlbumData({ ...albumData, numberOfTracks: e.target.value})}
             />
           </label>
         </fieldset>
-        <button type="submit">Submit</button>
+      <fieldset>
+          <div className="addAlbumFile">
+            <p>Photo</p>
+                <FileBase 
+                  type='file'
+                  multiple={false}
+                  onDone={({base64}) => setAlbumData({ ...albumData, selectedFile: base64})}
+                />
+         </div>
+      </fieldset>
+        <button className="addAlbum-submit-btn"type="submit">Submit</button>
       </form>
 
-      <button onClick={clearAlbum}>Clear</button>
+      <button className="addAlbum-clear-btn" onClick={clearAlbum}>Clear</button>
 
       </div>
-         </div>
-      </div>
-    );
+    </div>
+     );
   }
   
   export default AddArtist;
