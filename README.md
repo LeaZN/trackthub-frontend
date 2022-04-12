@@ -7,6 +7,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+!!! Note: After you log in, please return to "/" to use the navbar to navigate through the app. 
+I did not know how to fix this problem and would appreciate some advice :) 
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
