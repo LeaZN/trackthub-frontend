@@ -15,7 +15,7 @@ function Home() {
 
     return (
 
-
+  !artists.length ? <Loading/> : (
 
 
       <div className="browse">
@@ -44,7 +44,7 @@ function Home() {
       </div>
     
       )
-  
+   )
    ;
   }
   
