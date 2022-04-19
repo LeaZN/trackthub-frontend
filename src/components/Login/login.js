@@ -1,4 +1,5 @@
 
+import { useSelector} from 'react-redux';
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { createLogin } from '../../actions/users';
@@ -8,6 +9,9 @@ function Login () {
 
 let navigate = useNavigate();
 const dispatch = useDispatch();
+    
+const artists = useSelector((state) => state.artists);
+
 
 
 
